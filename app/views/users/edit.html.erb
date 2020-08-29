@@ -1,0 +1,21 @@
+<%= form_for @user, data: { behavior: "autosave" }, url: {action: "update"} do |f| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= f.label :email, "email:" %>
+  <%= f.text_field :email, :value => "email@domain.com" %><br><br>
+  <%= f.label :username, "username:" %>
+  <%= f.text_field :username, :value => "Your username here" %><br><br>
+  <%= f.label :password, "password:" %>
+  <%= f.password_field :password %><br><br>
+  <%= f.submit "Submit" %>
+  
+<% end %>
